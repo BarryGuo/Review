@@ -170,12 +170,16 @@
 
     
     
-#pragma mark block实现
+#pragma mark block本质
     
     /*
      带有自动变量值的匿名函数
+     
+     
+     
+     block是object-c的对象
      */
-    //91
+    
     
     
 }

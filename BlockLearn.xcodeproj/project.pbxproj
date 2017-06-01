@@ -14,6 +14,7 @@
 		4C55AC531EDFFDFF00C12927 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C55AC521EDFFDFF00C12927 /* Assets.xcassets */; };
 		4C55AC561EDFFDFF00C12927 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C55AC541EDFFDFF00C12927 /* LaunchScreen.storyboard */; };
 		4C55AC5F1EDFFE4700C12927 /* BlockT.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C55AC5E1EDFFE4700C12927 /* BlockT.m */; };
+		66414D5A1EE068220029AAE6 /* test.c in Sources */ = {isa = PBXBuildFile; fileRef = 66414D581EE068220029AAE6 /* test.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		4C55AC571EDFFDFF00C12927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C55AC5D1EDFFE4700C12927 /* BlockT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockT.h; sourceTree = "<group>"; };
 		4C55AC5E1EDFFE4700C12927 /* BlockT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockT.m; sourceTree = "<group>"; };
+		66414D581EE068220029AAE6 /* test.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = test.c; sourceTree = "<group>"; };
+		66414D591EE068220029AAE6 /* test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				4C55AC4D1EDFFDFE00C12927 /* ViewController.m */,
 				4C55AC5D1EDFFE4700C12927 /* BlockT.h */,
 				4C55AC5E1EDFFE4700C12927 /* BlockT.m */,
+				66414D581EE068220029AAE6 /* test.c */,
+				66414D591EE068220029AAE6 /* test.h */,
 				4C55AC4F1EDFFDFE00C12927 /* Main.storyboard */,
 				4C55AC521EDFFDFF00C12927 /* Assets.xcassets */,
 				4C55AC541EDFFDFF00C12927 /* LaunchScreen.storyboard */,
@@ -156,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66414D5A1EE068220029AAE6 /* test.c in Sources */,
 				4C55AC4E1EDFFDFE00C12927 /* ViewController.m in Sources */,
 				4C55AC4B1EDFFDFE00C12927 /* AppDelegate.m in Sources */,
 				4C55AC5F1EDFFE4700C12927 /* BlockT.m in Sources */,
@@ -320,6 +326,7 @@
 				4C55AC5C1EDFFDFF00C12927 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
