@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 #import "BlockT.h"
+#import "Block循环引用.h"
 
 @interface ViewController ()
 
@@ -21,8 +22,9 @@
     // Do any additional setup after loading the view, typically from a nib.
     
 //    [self blockt];
+
     
-    [self gcdT];
+    [self GCDT];
     
 }
 
@@ -133,9 +135,6 @@
     NSLog(@"val = %d", val);
     
     
-    
-    
-    
     /*
      截获oc对象，调用更改该对象的方法不会产生编译错误，但是赋值则会产生编译错误
      */
@@ -147,6 +146,7 @@
         
         //出错
 //        array = [NSMutableArray array];
+        
     };
     array__block();
     
@@ -240,7 +240,7 @@
      
      
      _NSConcreteStackBlock
-     当block的结构体实例需要保存自动变量时，该block的结构体实例设置在程序的数据区域。如下所示：
+     当block的结构体实例需要保存自动变量时，该block的结构体实例设置在程序的栈区域。如下所示：
      typedef int (^Blk)(int);
      for(int rate =0 ; rate < 10; ++rate){
         Blk blk = ^(int count){ return rate * count};
@@ -253,7 +253,7 @@
      
      
      
-     _NSContreteGlobalBlock    impl.isa = &_NSContreteMallocBlock
+     _NSContreteMallocBlock    impl.isa = &_NSContreteMallocBlock
      配置在全局变量上的block，从变量的作用域外也可以安全地通过指针使用。但是设置在栈上的block,如果其所属的变量作用域结束，该block也被废弃。
      由于__block变量也设置在栈上，同样会被废弃。
      
@@ -424,15 +424,130 @@
    
 
 #pragma mark Block循环引用
+    Block____ *blk____ = [[Block____ alloc] init];
+    blk____.blk();
+    blk____.blk = nil;
+    /*
+     如果block对引用的自动变量进行强引用，并且自动变量也对block进行强引用，并且在之后没有做其它的操作去打破这种关系，那么就会造成循环引用，在该释放的时候不释放，出现内存泄漏
+     
+     基本上，我们有三种方法去避免:
+     
+     1、对block要引用的自动变量使用 __weak 或者 __unsafe__unretained修饰符。block对自动变量进行弱引用。这是最好的方式
+     
+     2、对block要引用的自动变量使用 __block修饰符，在block中对自动变量进行置nil处理。这种方式其实循环引用已经被建立，只不过在block执行中强行打破。block必须被执行才能打破这种循环
+     
+     
+     3、在外部调用，强行将block置空
+       例如 blk____.blk = nil;
+     
+     
+     */
     
+ 
     
+#pragma mark copy/realse
+    /*
+    ARC无效的情况下，一般需要手动将block从栈复制到堆。另外，由于ARC失效，所以需要释放复制的block。我们使用copy来复制，使用release来释放
+     
+     void (^blk_on_heap)(void) = [blk_on_stack copy];
+     [blk_on_heap  release]
+     
+     只要block有一次复制并配置在堆上，我们就能通过retain持有
+     [blk_on_heap retain]
+     
+     但是对于配置在栈上的block调用copy是无效的
+     [blk_on_stack retain]  //没有任何作用
     
+    */
+    
+    /*
+     ARC无效的情况下，__block修饰符可以用来避免block的循环引用。
+     这是因为，当block从栈被复制到堆时，若block使用的变量为附有__block修饰的id类型或者对象类型的变量，不会被retain；若没用使用__block，这会被retain，造成循环引用。
+     
+     但是，如果arc有效的情况下，仅仅用__block是不能避免循环引用的。
+     
+     
+     */
+    
+    NSLog(@"block end");
     
 }
 
 
 
-- (void)gcdT{
+- (void)GCDT{
+    
+    /*
+     异步调用的技术之一
+     
+     多线程
+     一个cpu执行的cpu命令行列为一条无分叉的路径，即为线程。
+     
+     使用多线程的程序可以在某个线程和其它线程之间反复多次的进行上下文切换，看起来就像1个cpu核可以能够并列的执行多个线程一样。
+     
+     如果在具有多个核的情况下就不是看上去像，而是真的能够多个核并行执行多个线程了。
+     
+     这种利用多线程编程的技术就是 "多线程编程技术"
+     
+     
+     多线程容易导致的问题:
+     数据竞争:多个线程更新同样的资源导致数据不一致
+     死锁:多个线程互相等待
+     使用太多线程会消耗大量内存等
+     
+     
+     
+     
+     dispatch_async(queue, ^{
+        //长时间处理
+     dispatch_async(dispatch_get_main_queue(), ^{
+            //主线程执行
+        });
+     });
+     
+     */
+    
+
+#pragma mark  Dispatch Queue
+    /*
+     开发者要做的只是定义想执行的任务加到合适的Dispatch Queue中
+    
+     加入的队列中，采用FIFO的原则
+     
+     队列分两种: 串行(Serial Dispatch Queue) 和 并行(Concurrent Dispatch Queue)
+     
+     串行: 一个任务接着一个任务在当前线程顺序执行
+     
+     并行:系统根据当前分配新的线程，同时执行多个任务，但是并不一定对每个任务都开新线程，根据情况会复用线程
+     
+     */
+    
+#pragma mark  dispatch_queue_create
+    
+    /*
+     通过GCD的API生成Dispatch_Queue
+     
+     串行队列可以申请很多个，但是不建议这么做，太耗内存。一般操作一个资源就只用一个线程
+     */
+    dispatch_queue_t mySerialDispatchQueue = dispatch_queue_create("com.example.barry.SerialDispatchQueue", NULL);
+    
+    /*
+     并行队列
+     */
+    dispatch_queue_t  myConcurrentDispatchQueue = dispatch_queue_create("com.example.barry.ConcurrentDispatchQueue", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(myConcurrentDispatchQueue, ^{
+        NSLog(@"block on concurrenDispatchQueue");
+    });
+    
+    
+    /*
+     在ios6以下，create出来的GCD需要进行release
+     */
+    
+
+#pragma mark Main Dispatch Queue/ Global Dispatch Queue
+    
+    
     
     
 #pragma mark dispatch_set_target_queue
@@ -441,8 +556,8 @@
      变更线程的优先级
      */
     dispatch_queue_t globalDispatchQueueBackGround = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
-    dispatch_queue_t mySerialDispatchQueue = dispatch_queue_create("com.example.gcd.MySerialDispatchQueue", NULL);
-    dispatch_set_target_queue(mySerialDispatchQueue, globalDispatchQueueBackGround);
+    dispatch_queue_t mySerialDispatchQueue2 = dispatch_queue_create("com.example.gcd.MySerialDispatchQueue", NULL);
+    dispatch_set_target_queue(mySerialDispatchQueue2, globalDispatchQueueBackGround);
     
 #pragma mark dispatch_after
     
@@ -482,10 +597,7 @@
     
 #pragma mark dispatch_barrier_async
     
-    
 }
-
-
 
 
 - (void)didReceiveMemoryWarning {
