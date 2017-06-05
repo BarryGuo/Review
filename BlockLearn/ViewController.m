@@ -572,17 +572,18 @@
      */
     dispatch_queue_t globalDispatchQueue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_group_t queueGroup = dispatch_group_create();
+    
     dispatch_group_async( queueGroup, globalDispatchQueue2, ^{
-        NSLog(@"任务1");
+        NSLog(@"任务1 thread：%@",[NSThread currentThread]);
     });
     dispatch_group_async( queueGroup, globalDispatchQueue2, ^{
-        NSLog(@"任务2");
+        NSLog(@"任务2 thread:%@",[NSThread currentThread]);
     });
     dispatch_group_async( queueGroup, globalDispatchQueue2, ^{
-        NSLog(@"任务3");
+        NSLog(@"任务3 thread:%@", [NSThread currentThread]);
     });
     dispatch_group_notify(queueGroup, dispatch_get_main_queue(), ^{
-        NSLog(@"执行结束任务");
+        NSLog(@"执行结束任务 thread:%@", [NSThread currentThread]);
     });
     
     /*
@@ -596,6 +597,53 @@
     }
     
 #pragma mark dispatch_barrier_async
+    /*
+     在数据库操作中，读取操作可以并行执行，但是写入操作不能并行操作，否则容易出现数据竞争。
+     
+     写入操作的过程中，不应该同时进行读取操作，否则容易出现数据不一致。
+     */
+    
+    dispatch_queue_t queueBarrier = dispatch_queue_create("com.dispatch.barrier", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queueBarrier, ^{
+        NSLog(@"reading 1, thread:%@", [NSThread currentThread]);
+    });
+    dispatch_async(queueBarrier, ^{
+        NSLog(@"reading 2, thread:%@", [NSThread currentThread]);
+    });
+    dispatch_async(queueBarrier, ^{
+        NSLog(@"reading 3, thread:%@", [NSThread currentThread]);
+    });
+    dispatch_async(queueBarrier, ^{
+        NSLog(@"reading 4, thread:%@", [NSThread currentThread]);
+    });
+    //写入操作，只有写入操作完成之后，后面的操作才能继续
+    dispatch_barrier_async(queueBarrier, ^{
+        NSLog(@"writing thread %@ ", [NSThread currentThread]);
+    });
+    
+    dispatch_async(queueBarrier, ^{
+        NSLog(@"reading 5, thread:%@", [NSThread currentThread]);
+    });
+    dispatch_async(queueBarrier, ^{
+        NSLog(@"reading 6, thread:%@", [NSThread currentThread]);
+    });
+    dispatch_async(queueBarrier, ^{
+        NSLog(@"reading 7, thread:%@", [NSThread currentThread]);
+    });
+    dispatch_async(queueBarrier, ^{
+        NSLog(@"reading 8, thread:%@", [NSThread currentThread]);
+    });
+    
+    
+    
+#pragma mark dispatch_sync
+    /*
+     async  非同步    block任务非同步的追加到指定的queue中。async不做任何等待。
+     sync  同步   block任务同步的追加到指定的queue中。在block任务结束之前，dispatch_sync函数会一直等待。
+     */
+    
+    
+    
     
 }
 
