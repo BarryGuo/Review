@@ -20,8 +20,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self blockt];
+//    [self blockt];
     
+    [self gcdT];
     
 }
 
@@ -429,6 +430,60 @@
     
 }
 
+
+
+- (void)gcdT{
+    
+    
+#pragma mark dispatch_set_target_queue
+    
+    /*
+     变更线程的优先级
+     */
+    dispatch_queue_t globalDispatchQueueBackGround = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
+    dispatch_queue_t mySerialDispatchQueue = dispatch_queue_create("com.example.gcd.MySerialDispatchQueue", NULL);
+    dispatch_set_target_queue(mySerialDispatchQueue, globalDispatchQueueBackGround);
+    
+#pragma mark dispatch_after
+    
+    /*
+     任务延迟加入到指定线程队列中
+     */
+    
+#pragma mark dispatch group
+    /*
+     将多个任务并行执行，全部完成后，通知执行结束任务。
+     比如异步下载多张图片，全部下载成功后再通知合成成一张图片
+     */
+    dispatch_queue_t globalDispatchQueue2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_group_t queueGroup = dispatch_group_create();
+    dispatch_group_async( queueGroup, globalDispatchQueue2, ^{
+        NSLog(@"任务1");
+    });
+    dispatch_group_async( queueGroup, globalDispatchQueue2, ^{
+        NSLog(@"任务2");
+    });
+    dispatch_group_async( queueGroup, globalDispatchQueue2, ^{
+        NSLog(@"任务3");
+    });
+    dispatch_group_notify(queueGroup, dispatch_get_main_queue(), ^{
+        NSLog(@"执行结束任务");
+    });
+    
+    /*
+     可以使用dispatch_group_wait来判断是否全部执行完成
+     */
+    long result = dispatch_group_wait(queueGroup, dispatch_time(DISPATCH_TIME_NOW, 2));
+    if (result == 0) {
+        //队列组全部执行完成
+    }else{
+        //没有完成
+    }
+    
+#pragma mark dispatch_barrier_async
+    
+    
+}
 
 
 
