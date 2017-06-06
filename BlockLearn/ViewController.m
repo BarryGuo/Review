@@ -636,13 +636,166 @@
     
     
     
-#pragma mark dispatch_sync
+#pragma mark dispatch_sync 死锁
     /*
      async  非同步    block任务非同步的追加到指定的queue中。async不做任何等待。
      sync  同步   block任务同步的追加到指定的queue中。在block任务结束之前，dispatch_sync函数会一直等待。
      */
     
+    /*
+     一旦调用dispatch_sync函数，那么在指定的处理执行结束之前，该函数不会返回。dispatch_sync函数可简化源代码，相当于简易版的dispatch_group_wait函数
+     */
+    dispatch_queue_t queueGlobal2 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_sync(queueGlobal2, ^{
+        NSLog(@"同步任务 thread:%@", [NSThread currentThread]);
+    });
+    NSLog(@"同步任务完成");
     
+    /*
+     主线程在等待dispatch_sync的结果返回,而加到当前主线程的block又需要主线程来执行。
+     两者互相等待，造成死锁。
+     
+    dispatch_queue_t queueMian3 = dispatch_get_main_queue();
+    dispatch_sync(queueMian3, ^{
+        NSLog(@"hello?");
+    });
+     */
+    
+    /*
+     同步队列也会产生相同的问题，其实主线程就是一种特殊的同步队列
+     
+    dispatch_queue_t queueSerialDispatchQueue2 = dispatch_queue_create("com.example.gcd.serialDispatchQueue", NULL);
+    dispatch_async(queueSerialDispatchQueue2, ^{
+        dispatch_sync(queueSerialDispatchQueue2, ^{
+            NSLog(@"同步任务");
+        });
+    });
+    */
+    
+
+#pragma mark dispatch_apply
+    /*
+     dispatch_apply可以将指定的多个block追加到指定的Dispatch Queue中，并等待全部处理执行结束
+     */
+    dispatch_queue_t queueGlobal3 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_apply(10, queueGlobal3, ^(size_t index) {
+        NSLog(@"dispatch_apply %zu", index);
+    });
+    NSLog(@"done");
+    
+    /*
+    由于dispatch_apply函数也和dispatch_sync函数相同，会等待处理执行结果.因此，推荐在dispatch_async函数中非同步的执行dispatch_apply函数
+     */
+    NSArray * array1 = [NSArray arrayWithObjects:@1,@2,@3 ,nil];
+    
+    dispatch_queue_t queueGlobal4 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    
+    //在 global dispatch queue 中非同步执行
+    dispatch_async(queueGlobal4, ^{
+        
+       //global dispatch queue,等待dispatch_apply函数全部处理执行结束
+        dispatch_apply([array1 count], queueGlobal4, ^(size_t index) {
+            
+            //并行处理包含在NSArray对象中的全部对象
+            NSLog(@"%zu:%@ thread = %@", index, [array1 objectAtIndex:index], [NSThread currentThread]);
+        });
+        
+        //dispatch_array函数全部执行结束
+        //转到Main Dispatch Queue中非同步执行
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+           //在Main dispatch Queue中更新
+            NSLog(@"done");
+        });
+    });
+    
+
+#pragma mark dispatch_suspend / dispatch_resume
+    /*
+     
+     dispatch_suspend(queue) 挂起指定的queue
+     dispatch_resume(queue) 恢复指定的queue
+     
+     这些函数对已经执行的处理没有影响。挂起后，追加到queue中尚未执行的block在此之后不会执行。而恢复则使得这些处理能够继续执行。
+     
+     */
+    
+#pragma mark dispatch semaphore
+    
+    /*
+     在进行并行处理更新数据时，会产生数据不一致的情况，有时可能导致异常结束。
+     当前避免’数据竞争‘的方法有   Serial Dispatch Queue 和 dispatch_barrier_async。
+     但有时还需要更细粒度的排他控制。
+     */
+    
+    /*
+     因为该源代码使用Global Dispatch Queue更新NSMutableArray类对象，所以执行后由内存错误导致应用程序异常结束的概率很高。此时应使用
+     Dispatch Semaphore
+     */
+//    dispatch_queue_t queueGlobal5 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    NSMutableArray *array2 = [[NSMutableArray alloc] init];
+//    for (int i=0; i< 10000; i++) {
+//        dispatch_async(queueGlobal5, ^{
+//            [array2 addObject:[NSNumber numberWithInt:i]];
+//            NSLog(@"%d", i);
+//        });
+//    }
+    
+    
+    dispatch_queue_t queueGlobal6 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    /*
+     生成 dispatch semaphore。
+     dispatch semaphore的计数初始值设定为 1。保证可访问NSmutableArray类对象的线程同时只能有1个
+     */
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(1);
+    
+    NSMutableArray *array3 = [[NSMutableArray alloc] init];
+    for (int i=0; i< 1; i++) {
+        dispatch_async(queueGlobal6, ^{
+            
+            /*
+             等待dispatch  semaphore。
+             一直等待，直到 dispatch semaphore的计数值 大于等于1
+             */
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+            
+            /*
+             由于dispatch semaphore的计数值达到大于等于1
+             所以将 dispatch semaphore的计数值减去1
+             dispatch_semaphore_wait 函数执行返回
+             
+             即执行到此时的 dispatch semaphore的计数值恒为 0
+             
+             由于可访问NSMutableArray类对象的线程只有一个，因此可安全地进行更新
+             */
+            
+            [array3 addObject:[NSNumber numberWithInt:i]];
+            NSLog(@"%d", i);
+            
+            /*
+             排他控制结束
+             所以通过 dispatch_semaphore_signal函数 将 dispatch semaphore的计数值加1
+             */
+            dispatch_semaphore_signal(semaphore);
+            
+        });
+    }
+    
+    
+    
+#pragma mark dispatch once
+    /*
+     dispatch once 保证应用程序在执行过程中只执行一次指定处理的api。
+     */
+    static dispatch_once_t Pred;
+    dispatch_once(&Pred, ^{
+        /*
+         这里的代码只执行一次
+         */
+    });
+
+    
+#pragma mark  dispatch I/O
     
     
 }
