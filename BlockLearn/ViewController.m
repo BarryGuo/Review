@@ -797,7 +797,74 @@
     
 #pragma mark  dispatch I/O
     
+    /*
+     使用dispatch I/O 加快较大文件的读取
+     */
     
+    
+    
+    
+#pragma mark  GCD实现
+    /*
+     GCD在系统级即iOS和OS X的核心XNU内核级上实现。无论编程人员如何努力编写管理线程的代码，在性能方面也不可能胜过GCD
+     
+     GCD的API全部为包含在libdispatch库中的c语言函数上。Dispatch Queue通过结构体和链表，被实现为FIFO队列。FIFO队列管理是通过
+     dispatch_async等函数所追加的Block
+     
+     
+     Block先加入到上下文中，在加入到FIFO队列。
+     
+     当执行block时，先从FIFO取得这个block，然后获取对应的上下文，执行
+     
+     */
+ 
+
+#pragma mark Dispatch Source
+    /*
+     dispatch Source 和 dispatch Queue不同，是可以取消的。而且取消时必须执行的处理可指定为回调的block形式。
+     */
+    
+    //使用Dispatch_Source_Type_Timer的定时器的例子
+    
+    /*
+     指定Dispatch_source_type_timer，做成dispatch source
+     
+     在定时器经过指定时间时设定 Main dispatch Queue 为追加处理的 dispatch queue
+     */
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    
+    /*
+     将定时器设定在15秒后，不指定重复， 允许延迟1秒
+     */
+    dispatch_source_set_timer(timer,
+                              dispatch_time(DISPATCH_TIME_NOW, 15 * NSEC_PER_SEC),
+                              DISPATCH_TIME_FOREVER,
+                              1 * NSEC_PER_SEC);
+    
+    
+    /*
+     指定定时器时间内执行的任务
+     */
+    dispatch_source_set_event_handler(timer, ^{
+        NSLog(@"wakeup!");
+        
+        /*
+         取消 dispatch source
+         */
+        dispatch_source_cancel(timer);
+    });
+    
+    /*
+     指定取消 dispatch source 时的操作
+     */
+    dispatch_source_set_cancel_handler( timer, ^{
+        NSLog(@"canceld");
+        
+   
+    });
+    
+    
+    dispatch_resume(timer);
 }
 
 
