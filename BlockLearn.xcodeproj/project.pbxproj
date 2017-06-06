@@ -14,6 +14,8 @@
 		4C55AC531EDFFDFF00C12927 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C55AC521EDFFDFF00C12927 /* Assets.xcassets */; };
 		4C55AC561EDFFDFF00C12927 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C55AC541EDFFDFF00C12927 /* LaunchScreen.storyboard */; };
 		4C55AC5F1EDFFE4700C12927 /* BlockT.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C55AC5E1EDFFE4700C12927 /* BlockT.m */; };
+		4C55AC681EE6AE8C00C12927 /* Advanced.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C55AC671EE6AE8C00C12927 /* Advanced.m */; };
+		4C55AC6C1EE6B24100C12927 /* Tips52.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C55AC6B1EE6B24100C12927 /* Tips52.m */; };
 		66748A7D1EE3994300738DE6 /* Block循环引用.m in Sources */ = {isa = PBXBuildFile; fileRef = 66748A7C1EE3994300738DE6 /* Block循环引用.m */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +32,10 @@
 		4C55AC571EDFFDFF00C12927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C55AC5D1EDFFE4700C12927 /* BlockT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockT.h; sourceTree = "<group>"; };
 		4C55AC5E1EDFFE4700C12927 /* BlockT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockT.m; sourceTree = "<group>"; };
+		4C55AC661EE6AE8C00C12927 /* Advanced.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Advanced.h; sourceTree = "<group>"; };
+		4C55AC671EE6AE8C00C12927 /* Advanced.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Advanced.m; sourceTree = "<group>"; };
+		4C55AC6A1EE6B24100C12927 /* Tips52.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tips52.h; sourceTree = "<group>"; };
+		4C55AC6B1EE6B24100C12927 /* Tips52.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tips52.m; sourceTree = "<group>"; };
 		66748A7B1EE3994300738DE6 /* Block循环引用.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Block循环引用.h"; sourceTree = "<group>"; };
 		66748A7C1EE3994300738DE6 /* Block循环引用.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Block循环引用.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,14 +70,12 @@
 		4C55AC451EDFFDFE00C12927 /* BlockLearn */ = {
 			isa = PBXGroup;
 			children = (
+				4C55AC651EE6ADF300C12927 /* 高级编程_内存管理 */,
+				4C55AC691EE6AF6600C12927 /* tip52 */,
 				4C55AC491EDFFDFE00C12927 /* AppDelegate.h */,
 				4C55AC4A1EDFFDFE00C12927 /* AppDelegate.m */,
 				4C55AC4C1EDFFDFE00C12927 /* ViewController.h */,
 				4C55AC4D1EDFFDFE00C12927 /* ViewController.m */,
-				66748A7B1EE3994300738DE6 /* Block循环引用.h */,
-				66748A7C1EE3994300738DE6 /* Block循环引用.m */,
-				4C55AC5D1EDFFE4700C12927 /* BlockT.h */,
-				4C55AC5E1EDFFE4700C12927 /* BlockT.m */,
 				4C55AC4F1EDFFDFE00C12927 /* Main.storyboard */,
 				4C55AC521EDFFDFF00C12927 /* Assets.xcassets */,
 				4C55AC541EDFFDFF00C12927 /* LaunchScreen.storyboard */,
@@ -87,6 +91,29 @@
 				4C55AC471EDFFDFE00C12927 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4C55AC651EE6ADF300C12927 /* 高级编程_内存管理 */ = {
+			isa = PBXGroup;
+			children = (
+				66748A7B1EE3994300738DE6 /* Block循环引用.h */,
+				66748A7C1EE3994300738DE6 /* Block循环引用.m */,
+				4C55AC5D1EDFFE4700C12927 /* BlockT.h */,
+				4C55AC5E1EDFFE4700C12927 /* BlockT.m */,
+				4C55AC661EE6AE8C00C12927 /* Advanced.h */,
+				4C55AC671EE6AE8C00C12927 /* Advanced.m */,
+			);
+			name = "高级编程_内存管理";
+			path = "高级编程_内存管理i";
+			sourceTree = "<group>";
+		};
+		4C55AC691EE6AF6600C12927 /* tip52 */ = {
+			isa = PBXGroup;
+			children = (
+				4C55AC6A1EE6B24100C12927 /* Tips52.h */,
+				4C55AC6B1EE6B24100C12927 /* Tips52.m */,
+			);
+			path = tip52;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,7 +189,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C55AC4E1EDFFDFE00C12927 /* ViewController.m in Sources */,
+				4C55AC681EE6AE8C00C12927 /* Advanced.m in Sources */,
 				66748A7D1EE3994300738DE6 /* Block循环引用.m in Sources */,
+				4C55AC6C1EE6B24100C12927 /* Tips52.m in Sources */,
 				4C55AC4B1EDFFDFE00C12927 /* AppDelegate.m in Sources */,
 				4C55AC5F1EDFFE4700C12927 /* BlockT.m in Sources */,
 				4C55AC481EDFFDFE00C12927 /* main.m in Sources */,
