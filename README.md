@@ -4,7 +4,7 @@
 
 # Runtime
   * 52个方法中 runtime章节
-  * [OC runtime](http://tech.glowing.com/cn/objective-c-runtime/)
+  * [OC runtime 消息传递、消息转发过程](http://tech.glowing.com/cn/objective-c-runtime/)
 
 # KVO
 
