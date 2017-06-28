@@ -4,8 +4,7 @@
 
 # Runtime
   * 52个方法中 runtime章节
-  * [OC runtime]: http://tech.glowing.com/cn/objective-c-runtime
-  * [这里](https://github.com/crazycodeboy/GitHubPopular)
+  * [OC runtime](http://tech.glowing.com/cn/objective-c-runtime/)
 
 # KVO
 
