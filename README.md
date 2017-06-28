@@ -1,7 +1,7 @@
 
 # Runtime
      * 52个方法中 runtime章节
-     [objectc-runtime](http://tech.glowing.com/cn/objective-c-runtime/)
+     * [objectc-runtime](http://tech.glowing.com/cn/objective-c-runtime/)
 
 # KVO
 
