@@ -1,7 +1,10 @@
 
+##工程说明
+  *记录平时看得一些关于面试的好文章
+
 # Runtime
      * 52个方法中 runtime章节
-     * [objectc-runtime](http://tech.glowing.com/cn/objective-c-runtime/)
+     * [OC runtime](http://tech.glowing.com/cn/objective-c-runtime)。
 
 # KVO
 
