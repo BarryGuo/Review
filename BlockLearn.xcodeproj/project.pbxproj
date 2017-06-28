@@ -16,6 +16,7 @@
 		4C55AC5F1EDFFE4700C12927 /* BlockT.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C55AC5E1EDFFE4700C12927 /* BlockT.m */; };
 		4C55AC681EE6AE8C00C12927 /* Advanced.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C55AC671EE6AE8C00C12927 /* Advanced.m */; };
 		4C55AC6C1EE6B24100C12927 /* Tips52.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C55AC6B1EE6B24100C12927 /* Tips52.m */; };
+		4CC5891F1F035F6500B20D58 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5891E1F035F6500B20D58 /* README.md */; };
 		66748A7D1EE3994300738DE6 /* Block循环引用.m in Sources */ = {isa = PBXBuildFile; fileRef = 66748A7C1EE3994300738DE6 /* Block循环引用.m */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		4C55AC671EE6AE8C00C12927 /* Advanced.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Advanced.m; sourceTree = "<group>"; };
 		4C55AC6A1EE6B24100C12927 /* Tips52.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tips52.h; sourceTree = "<group>"; };
 		4C55AC6B1EE6B24100C12927 /* Tips52.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tips52.m; sourceTree = "<group>"; };
+		4CC5891E1F035F6500B20D58 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		66748A7B1EE3994300738DE6 /* Block循环引用.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Block循环引用.h"; sourceTree = "<group>"; };
 		66748A7C1EE3994300738DE6 /* Block循环引用.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Block循环引用.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +72,7 @@
 		4C55AC451EDFFDFE00C12927 /* BlockLearn */ = {
 			isa = PBXGroup;
 			children = (
+				4CC5891E1F035F6500B20D58 /* README.md */,
 				4C55AC651EE6ADF300C12927 /* 高级编程_内存管理 */,
 				4C55AC691EE6AF6600C12927 /* tip52 */,
 				4C55AC491EDFFDFE00C12927 /* AppDelegate.h */,
@@ -194,6 +197,7 @@
 				4C55AC6C1EE6B24100C12927 /* Tips52.m in Sources */,
 				4C55AC4B1EDFFDFE00C12927 /* AppDelegate.m in Sources */,
 				4C55AC5F1EDFFE4700C12927 /* BlockT.m in Sources */,
+				4CC5891F1F035F6500B20D58 /* README.md in Sources */,
 				4C55AC481EDFFDFE00C12927 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
