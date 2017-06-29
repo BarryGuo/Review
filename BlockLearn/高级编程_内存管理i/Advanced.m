@@ -243,7 +243,7 @@
      配置在全局变量上的block，从变量的作用域外也可以安全地通过指针使用。但是设置在栈上的block,如果其所属的变量作用域结束，该block也被废弃。
      由于__block变量也设置在栈上，同样会被废弃。
      
-     通过将block 和__block变量复制到堆上，即使block语法记述的变量作用域结束，堆上的block还可以继续存在。而__block变量用结构体成员变量__forwarding 可以实现无论__block变量配置在栈上还是堆上都可以正确反问__block对象。
+     通过将block 和__block变量复制到堆上，即使block语法记述的变量作用域结束，堆上的block还可以继续存在。而__block变量用结构体成员变量__forwarding 可以实现无论__block变量配置在栈上还是堆上都可以正确访问__block对象。
      
      当ARC有效时，大部分情形下编译器会恰当地进行判断，自动生成将block从栈上复制到堆上的代码。比如下面这段代码
      typedef int (^blk_t)(int);
@@ -441,7 +441,7 @@
      只要block有一次复制并配置在堆上，我们就能通过retain持有
      [blk_on_heap retain]
      
-     但是对于配置在栈上的block调用copy是无效的
+     但是对于配置在栈上的block调用retain是无效的
      [blk_on_stack retain]  //没有任何作用
      
      */

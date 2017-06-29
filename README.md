@@ -11,6 +11,8 @@
   * [孙源博客 神经病院objc runtime入院考试](http://blog.sunnyxx.com/2014/11/06/runtime-nuts/)
   * [视频 孙源 线下分享](http://v.youku.com/v_show/id_XMTMwNTE1OTc3Mg==.html?spm=a2h0j.8191423.module_basic_relation.5~5!2~5~5!3~5!2~1~3~A)
   * [Runtime 简单粗暴理解](http://www.jianshu.com/p/f900de4a1495#)
+  * [libireme Objective-C中的消息和消息转发](http://blog.ibireme.com/2013/11/26/objective-c-messaging/)
+  * [Method Swizzling和AOP实践](http://tech.glowing.com/cn/method-swizzling-aop/)
 
 # KVO
   * [孙源 kvo的简单探索](http://blog.sunnyxx.com/2014/03/09/objc_kvo_secret/)
@@ -39,6 +41,8 @@
 
 # 多线程 NSTread GCD NSOpreation
   * 《高级编程》GCD章节
+  * [简书  关于iOS多线程，你看我就够了](http://www.jianshu.com/p/0b0d9b1f1f19)
+  * [土土哥的技术blog GCD的使用经验和技巧谈谈](http://tutuge.me/2015/04/03/something-about-gcd/index.html)
 
 # 响应者链
 
@@ -52,6 +56,15 @@
 
 
 # Socekt
+  * 百度百科关于socket的解释
+  * [iOS的socket开发基础](https://my.oschina.net/u/1378445/blog/340206)
+  * [iOS socket原理解析](http://www.cnblogs.com/wyk19910103/p/5482363.html)
+  * [iOS 开发 网络编程详解之Socket详解](http://blog.csdn.net/kuangdacaikuang/article/details/53386782)
+  * [简书 关于iOS socket都在这里了](http://www.jianshu.com/p/3e4f3de18e3b)
+  * [Socket通信原理和实践](http://blog.csdn.net/jiajia4336/article/details/8798421)
+  * [TCP/IP、Http、Socket的区别](http://jingyan.baidu.com/article/08b6a591e07ecc14a80922f1.html)
+  * [Socket详解](http://blog.csdn.net/sight_/article/details/8138802)
+  * [简单理解Socket](http://www.cnblogs.com/dolphinX/p/3460545.html)
 
 
 # TCP/UDP
@@ -75,10 +88,14 @@
 
 
 # objectc 题目汇总
-  * [招聘一个靠谱的iOS 集锦](https://github.com/ChenYilong/iOSInterviewQuestions/)
+  * [github 招聘一个靠谱的iOS 集锦](https://github.com/ChenYilong/iOSInterviewQuestions/)
+  * [CSDN iOS开发之OC最常见面试题总结](http://blog.csdn.net/star__shine/article/details/51203689)
+  * [cnblog 一个低调的ios开发 iOS面试题](http://www.cnblogs.com/ioshe/p/5481445.html)
+  * [知乎 如何面试iOS工程师](https://www.zhihu.com/question/19604641/answer/44151044?group_id=764252403695390720)
+  * [那些著名或非著名的iOS面试题](http://www.codeceo.com/article/ios-interview-1.html)
+  * [segmentfault iOS(OC)常见面试题](https://segmentfault.com/a/1190000004196352)
 
-
-# c算法题目汇总
+# c算法、数据结构题目汇总
 
 
 
