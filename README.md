@@ -55,7 +55,7 @@
 
 
 
-# Socekt
+# Socekt / TCP/UDP
   * 百度百科关于socket的解释
   * [iOS的socket开发基础](https://my.oschina.net/u/1378445/blog/340206)
   * [iOS socket原理解析](http://www.cnblogs.com/wyk19910103/p/5482363.html)
@@ -65,15 +65,26 @@
   * [TCP/IP、Http、Socket的区别](http://jingyan.baidu.com/article/08b6a591e07ecc14a80922f1.html)
   * [Socket详解](http://blog.csdn.net/sight_/article/details/8138802)
   * [简单理解Socket](http://www.cnblogs.com/dolphinX/p/3460545.html)
+  * [http与socket的连接区别](http://blog.sina.com.cn/s/blog_58dbd16c0100clx6.html)
 
 
-# TCP/UDP
 
-# HTTP/https
+
+# HTTP/https   get/post
+  * [http与https的区别](https://jingyan.baidu.com/article/f25ef2541263d0482c1b82ea.html)
+  * [HTTPS和HTTP的区别](http://blog.csdn.net/whatday/article/details/38147103)
+  * [浅谈HTTP中Get与Post的区别](http://www.cnblogs.com/hyddd/archive/2009/03/31/1426026.html)
+  * [HTTP 方法：GET 对比 POST](http://www.w3school.com.cn/tags/html_ref_httpmethods.asp)
+  * [99% 的人都理解错了 HTTP 中 GET 与 POST 的区别](http://www.tuicool.com/articles/faAJNzR)
 
 # JS Reactnative
 
 # 音视频、voip、音视频编码、
+  * [视频码率（Bitrate）, 帧率（FPS）和分辨率的联系与区别](http://blog.csdn.net/wishfly/article/details/44211515)
+  * [H.264编码原理以及I帧B帧P帧](http://blog.sina.com.cn/s/blog_8fb8cd4801018yyo.html)
+  * [MPEG4与H.264的区别](http://blog.sina.com.cn/s/blog_4a471ff60100ccm3.html)
+  * [ 流媒体协议介绍（rtp/rtcp/rtsp/rtmp/mms/hls)](http://blog.csdn.net/tttyd/article/details/12032357/)
+  * [如何快速的开发一个完整的iOS直播app](http://www.jianshu.com/p/bd42bacbe4cc)
 
 # 数据库
 
@@ -94,6 +105,7 @@
   * [知乎 如何面试iOS工程师](https://www.zhihu.com/question/19604641/answer/44151044?group_id=764252403695390720)
   * [那些著名或非著名的iOS面试题](http://www.codeceo.com/article/ios-interview-1.html)
   * [segmentfault iOS(OC)常见面试题](https://segmentfault.com/a/1190000004196352)
+  * [超全！iOS 面试题汇总](http://www.cocoachina.com/programmer/20151019/13746.html)
 
 # c算法、数据结构题目汇总
 
