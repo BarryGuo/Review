@@ -23,6 +23,7 @@
 
 
 # ARC  内存管理 AutoRelease
+  * 《高级编程》 ARC章节
   * [孙源 ARC对Self的内存管理](http://blog.sunnyxx.com/2015/01/17/self-in-arc/)
   * [孙源 黑幕背后的AutoRelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
   * [孙源 objc arc简单探索](http://blog.sunnyxx.com/2014/03/15/objc_arc_secret/)
@@ -30,11 +31,14 @@
 
 
 # Block
+  * 《高级编程》 block章节
+  * 
 
 # 分类 Category
   * [孙源 category的秘密](http://blog.sunnyxx.com/2014/03/05/objc_category_secret/)
 
 # 多线程 NSTread GCD NSOpreation
+  * 《高级编程》GCD章节
 
 # 响应者链
 
