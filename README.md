@@ -30,11 +30,13 @@
   * [孙源 黑幕背后的AutoRelease](http://blog.sunnyxx.com/2014/10/15/behind-autorelease/)
   * [孙源 objc arc简单探索](http://blog.sunnyxx.com/2014/03/15/objc_arc_secret/)
   * [孙源 ARC下dealloc过程及.cxx_destruct的探究](http://blog.sunnyxx.com/2014/04/02/objc_dig_arc_dealloc/)
+  * [iOS开发ARC内存管理技术要点](http://www.cnblogs.com/flyFreeZn/p/4264220.html)
 
 
 # Block
   * 《高级编程》 block章节
-  * 
+  * [Objective-C中的Block](http://www.cocoachina.com/ios/20150109/10891.html)
+  * [一篇文章看懂iOS代码块Block](http://www.jianshu.com/p/14efa33b3562)
 
 # 分类 Category
   * [孙源 category的秘密](http://blog.sunnyxx.com/2014/03/05/objc_category_secret/)
@@ -95,6 +97,19 @@
 # 设计模式、 mvc 、 mvvm
 
 # 算法 和  数据结构
+  * [数据结构与算法常见笔试题](http://www.cnblogs.com/tony_cap/p/3705622.html)
+  * [八大排序算法](http://blog.csdn.net/hguisu/article/details/7776068/)
+  * []()
+  * []()
+  * []()
+  * []()
+  * []()
+  * []()
+  * []()
+  * []()
+  * []()
+  * []()
+  * []()
 
 
 
@@ -107,7 +122,6 @@
   * [segmentfault iOS(OC)常见面试题](https://segmentfault.com/a/1190000004196352)
   * [超全！iOS 面试题汇总](http://www.cocoachina.com/programmer/20151019/13746.html)
 
-# c算法、数据结构题目汇总
 
 
 
