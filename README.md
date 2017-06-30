@@ -92,6 +92,8 @@
   * [如何快速的开发一个完整的iOS直播app](http://www.jianshu.com/p/bd42bacbe4cc)
 
 # 数据库
+  * [ios实战-数据库更新升级方案](https://my.oschina.net/iq19900204/blog/407328)
+  * [iOS APP新版本升级数据库](http://blog.csdn.net/shan1991fei/article/details/50894436)
 
 
 # APNS 、 Pushkit
