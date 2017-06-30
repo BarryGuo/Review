@@ -57,7 +57,7 @@
 
 
 
-# Socekt / TCP/UDP
+# Socekt / TCP/UDP /网络
   * 百度百科关于socket的解释
   * [iOS的socket开发基础](https://my.oschina.net/u/1378445/blog/340206)
   * [iOS socket原理解析](http://www.cnblogs.com/wyk19910103/p/5482363.html)
@@ -68,7 +68,10 @@
   * [Socket详解](http://blog.csdn.net/sight_/article/details/8138802)
   * [简单理解Socket](http://www.cnblogs.com/dolphinX/p/3460545.html)
   * [http与socket的连接区别](http://blog.sina.com.cn/s/blog_58dbd16c0100clx6.html)
-
+  * [socket阻塞与非阻塞，同步与异步、I/O模型](http://blog.csdn.net/hguisu/article/details/7453390)
+  * [TCP/IP总结1：阻塞socket和非阻塞socket](http://blog.csdn.net/pingnanlee/article/details/7770087)
+  * [大端序与小端序——字节序与位域的存储](http://www.cnblogs.com/daxu/archive/2012/08/14/2638278.html)
+  * [大端小端 && 网络字节序](http://blog.csdn.net/legend050709/article/details/39890997)
 
 
 
@@ -92,9 +95,16 @@
 
 
 # APNS 、 Pushkit
+  * [关于Certificate、Provisioning Profile、App ID的介绍及其之间的关系](http://www.cnblogs.com/cywin888/p/3263027.html)
+  * [iOS各种证书之间详解关于Certificate、Provisioning Profile、App ID的介绍及其之间的关系](http://www.2cto.com/kf/201612/578585.html)
 
 
 # 设计模式、 mvc 、 mvvm
+
+
+# c和c++
+  * [C语言位操作符的使用](http://blog.csdn.net/shamohua/article/details/5783582)
+  
 
 # 算法 和  数据结构
   * [数据结构与算法常见笔试题](http://www.cnblogs.com/tony_cap/p/3705622.html)
