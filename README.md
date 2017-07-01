@@ -100,6 +100,9 @@
   * [关于Certificate、Provisioning Profile、App ID的介绍及其之间的关系](http://www.cnblogs.com/cywin888/p/3263027.html)
   * [iOS各种证书之间详解关于Certificate、Provisioning Profile、App ID的介绍及其之间的关系](http://www.2cto.com/kf/201612/578585.html)
 
+# 加解密
+  * [对称加密与非对称加密](http://www.cnblogs.com/jfzhu/p/4020928.html)
+
 
 # 设计模式、 mvc 、 mvvm
 
