@@ -109,12 +109,14 @@
 
 # c和c++
   * [C语言位操作符的使用](http://blog.csdn.net/shamohua/article/details/5783582)
+  * [c语言面试题__指针篇 ](http://blog.chinaunix.net/uid-20659461-id-1905159.html)
   
 
 # 算法 和  数据结构
   * [数据结构与算法常见笔试题](http://www.cnblogs.com/tony_cap/p/3705622.html)
   * [八大排序算法](http://blog.csdn.net/hguisu/article/details/7776068/)
   * [二叉树前序、中序、后序遍历相互求法](http://www.cnblogs.com/fzhe/archive/2013/01/07/2849040.html)
+  * [七大查找算法](http://www.cnblogs.com/maybe2030/p/4715035.html#_label0)
   * []()
   * []()
   * []()
