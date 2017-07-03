@@ -138,6 +138,7 @@
   * [那些著名或非著名的iOS面试题](http://www.codeceo.com/article/ios-interview-1.html)
   * [segmentfault iOS(OC)常见面试题](https://segmentfault.com/a/1190000004196352)
   * [超全！iOS 面试题汇总](http://www.cocoachina.com/programmer/20151019/13746.html)
+  * [HIT-Alibaba/interview](https://hit-alibaba.github.io/interview/index.html)
 
 
 
